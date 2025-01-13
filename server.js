@@ -120,6 +120,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
+  console.log(req.body)
       const { identifier, password } = req.body;
     
       if (!identifier || !password) {
@@ -163,7 +164,7 @@ app.post('/login', async (req, res) => {
           maxAge: 60 * 60 * 1000, // 1 hour
         });
     
-        res.status(200).json({ message: 'Login successful!' });
+        res.redirect('/todo'); // Redirect to the todo page after successful login
       } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred. Please try again later.' });
